@@ -48,7 +48,7 @@ coursenum = 'test_course'
 sequence = {}
 
 
-class ReuqestHandlerWithSessionId(object):
+class RequestHandlerWithSessionId(object):
     def get(self, url):
         """
         Sends a request.
@@ -448,7 +448,7 @@ def i_can_download_transcript(_step, format, text):
     }
 
     url = world.css_find(VIDEO_BUTTONS['download_transcript'])[0]['href']
-    request = ReuqestHandlerWithSessionId()
+    request = RequestHandlerWithSessionId()
     assert request.get(url).is_success()
     assert request.check_header('content-type', formats[format])
     assert (text.encode('utf-8') in request.content)
