@@ -395,7 +395,6 @@ def modify_access(request, course_id):
     course = get_course_with_access(
         request.user, course_id, 'instructor', depth=None
     )
-#    import pudb; pu.db
     try:
         user = get_student_from_identifier(request.GET.get('unique_student_identifier'))
     except User.DoesNotExist:
@@ -405,7 +404,10 @@ def modify_access(request, course_id):
         }
         return JsonResponse(response_payload)
 
-    if not (user.is_authenticated and user.is_active):
+    # Check that user is authenticated and is active, because
+    # add_users in common/djangoapps/student/roles.py fails
+    # silently when we try to add an inactive user.
+    if not (user.is_authenticated() or user.is_active):
         response_payload = {
             'unique_student_identifier': user.username,
             'inactiveUser': True,
