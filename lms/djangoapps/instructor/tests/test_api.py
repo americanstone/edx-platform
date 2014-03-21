@@ -924,7 +924,16 @@ class TestInstructorAPILevelsAccess(ModuleStoreTestCase, LoginEnrollmentTestCase
             'rolename': 'instructor',
             'action': 'revoke',
         })
-        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.status_code, 200)
+        # check response content
+        expected = {
+            'unique_student_identifier': self.instructor.username,
+            'rolename': 'instructor',
+            'action': 'revoke',
+            'removingSelfAsInstructor': True,
+        }
+        res_json = json.loads(response.content)
+        self.assertEqual(res_json, expected)
 
     def test_list_course_role_members_noparams(self):
         """ Test missing all query parameters. """

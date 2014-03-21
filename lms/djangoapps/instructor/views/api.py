@@ -395,8 +395,23 @@ def modify_access(request, course_id):
     course = get_course_with_access(
         request.user, course_id, 'instructor', depth=None
     )
+#    import pudb; pu.db
+    try:
+        user = get_student_from_identifier(request.GET.get('unique_student_identifier'))
+    except User.DoesNotExist:
+        response_payload = {
+            'unique_student_identifier': request.GET.get('unique_student_identifier'),
+            'userDoesNotExist': True,
+        }
+        return JsonResponse(response_payload)
 
-    user = get_student_from_identifier(request.GET.get('unique_student_identifier'))
+    if not (user.is_authenticated and user.is_active):
+        response_payload = {
+            'unique_student_identifier': user.username,
+            'inactiveUser': True,
+        }
+        return JsonResponse(response_payload)
+
     rolename = request.GET.get('rolename')
     action = request.GET.get('action')
 
@@ -407,9 +422,13 @@ def modify_access(request, course_id):
 
     # disallow instructors from removing their own instructor access.
     if rolename == 'instructor' and user == request.user and action != 'allow':
-        return HttpResponseBadRequest(
-            "An instructor cannot remove their own instructor access."
-        )
+        response_payload = {
+            'unique_student_identifier': user.username,
+            'rolename': rolename,
+            'action': action,
+            'removingSelfAsInstructor': True,
+        }
+        return JsonResponse(response_payload)
 
     if action == 'allow':
         allow_access(course, user, rolename)
