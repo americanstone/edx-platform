@@ -15,6 +15,7 @@ from verify_student.models import SoftwareSecurePhotoVerification
 import json
 import random
 import logging
+import lxml
 from xmodule.modulestore import Location
 
 
@@ -205,8 +206,10 @@ class XQueueCertInterface(object):
             cert.grade = grade['percent']
             cert.course_id = course_id
             cert.name = profile_name
+            # Strip HTML from grade range label
+            grade_text = lxml.html.fromstring(grade.get('grade', None)).text_content()
 
-            if is_whitelisted or grade['grade'] is not None:
+            if is_whitelisted or grade_text is not None:
 
                 # check to see whether the student is on the
                 # the embargoed country restricted list
@@ -221,11 +224,11 @@ class XQueueCertInterface(object):
                     key = make_hashkey(random.random())
                     cert.key = key
                     contents = {
-                        'action':       'create',
-                        'username':     student.username,
-                        'course_id':    course_id,
-                        'name':         profile_name,
-                        'grade':        grade['grade'],
+                        'action': 'create',
+                        'username': student.username,
+                        'course_id': course_id,
+                        'name': profile_name,
+                        'grade': grade_text,
                         'template_pdf': template_pdf,
                         'designation':  profile_title,
                     }
