@@ -13,7 +13,7 @@ HTML components are the most basic building blocks of your course. You use HTML 
 
 For more information, see the following topics:
 
-* :ref:`The User Interface`
+* :ref:`The HTML Editor`
 * :ref:`Create an HTML Component`
 * :ref:`Add a Link in an HTML Component`
 * :ref:`Add an Image to an HTML Component`
@@ -23,48 +23,63 @@ For more information, see the following topics:
 
 To add an instant hangout to an HTML component, see :ref:`Using an Instant Hangout in Your Course`.
 
-.. _The User Interface:
+.. _The HTML Editor:
 
 *****************************************
-The HTML Component User Interface
+The HTML Editor
 *****************************************
 
-When you create a new HTML component, you work with the HTML component editor. The editor has two views: **Visual view** and **HTML view.** To switch between Visual view and HTML view, click the tab in the upper-right corner of the component editor.
+When you create a new HTML component, you work with the HTML editor:
 
-.. image:: ../Images/HTMLEditorTabs.png
- :alt: Image of the HTML component editor, with the Visual and HTML tabs circled
+.. image:: ../Images/HTMLEditor.png
+ :alt: Image of the HTML component editor
 
-- **Visual view** provides a “what you see is what you get” (WYSIWYG) editor that allows you to format text by clicking the formatting buttons at the top of the editor. By default, every HTML component opens in Visual view.
+The HTML editor provides a “what you see is what you get” (WYSIWYG) interface that allows you to format text by clicking the formatting buttons at the top of the editor. 
 
-  Visual view includes the following formatting buttons.
+The following image shows callouts for the editing options and is followed by descriptions.
 
-  .. image:: ../Images/HTML_VisualView_Toolbar.png
-    :alt: Image of the HTML visual editor, with callouts for formatting buttons
+.. image:: ../Images/HTML_VisualView_Toolbar.png
+  :alt: Image of the HTML editor, with callouts for formatting buttons
 
-  #. Select a formatting style, such as heading 1, heading 2, or paragraph.
-  #. Format text in bold.
-  #. Format text in italics.
-  #. Underline text.
-  #. Create a bulleted list.
-  #. Create a numbered list.
-  #. Decrease the indent.
-  #. Indent text.
-  #. Format text as a blockquote.
-  #. Format text as code (i.e., in Courier font).
-  #. Create a link.
-  #. Delete the current link.
+#. Choose a formatting style for the selected paragraph, such as heading 1, heading 2, or paragraph.
+#. Choose a font family for selected text, such as Arial, Courier New, or Times New Roman.
+#. Format selected text in bold.
+#. Format selected text in italics.
+#. Format selected text as code.
+#. Underline selected text.
+#. Create a bulleted list.
+#. Create a numbered list.
+#. Decrease and increased the indentation of the selected paragraph.
+#. Format the selected paragraph as a blockquote.
+#. Format text as code (i.e., in Courier font).
+#. Create a link from the selected text.
+#. Delete the current link.
+#. Insert an image at the cursor.
+#. Work with HTML source code, described below.
 
-  Visual view shows your content the way it will appear in the LMS. The following is the LMS rendition of the HTML component above.
 
-  .. image:: ../Images/HTMLComponent_VisualView_LMS.png
-   :alt: Image of the visual view of the HTML component
+.. _Work with HTML code:
 
-- **HTML view** allows you to edit HTML code directly.
+============================
+Work with HTML code
+============================
 
-  .. image:: ../Images/HTML_HTMLView.png
-   :alt: Image of the HTML code view of the HTML component
+To work with HTML source code for the component, click the **Source code** icon in the HTML editor toolbar. The HTML source code editor opens:
 
-  .. note:: If you're in HTML view, you can always switch to Visual view to make sure your content looks the way you expect. For example, we recommend that you do this if you add an image or a link to an HTML component.
+.. image:: ../Images/HTML_source_code.png
+ :alt: Image of the HTML source code editor
+
+Edit the HTML code as needed.  The source code editor attempts to ensure your HTML code is valid; for example, if you do not close a formatting tag, it inserts one at the end of the paragraph when you save the text.
+
+You can search for and replace text in the HTML source code using the control keys at listed at the bottom of the editor. For example, use Control-F to search for specific text. The search field opens at the top of the editor:
+
+.. image:: ../Images/HTML_source_code_search.png
+  :alt: Image of the HTML source code editor with the search field circled
+
+Click **OK** to apply your changes to the HTML editor and close the source code.
+
+.. note:: Clicking **OK** in the source code editor does not save your changes to the HTML component.  You return to the visual HTML editor, where your changes are applied.  You must click **Save** to save your changes and close the component. If you click **Cancel**, the changes you made in the HTML source code are lost.
+
 
 .. _Create an HTML Component:
 
