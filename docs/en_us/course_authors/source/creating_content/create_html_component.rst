@@ -270,7 +270,7 @@ To add an image, you'll need the URL of the image that you uploaded to the cours
    .. image:: ../Images/HTML_Insert-Edit_Image.png
     :alt: Image of the Insert/Edit Image dialog box with a link to a file
 
-4. Enter alternative text in the **Image description** field. See :ref:`Best Practices for Describing Images` for more information.
+4. Enter alternative text in the **Image description** field. This text becomes the value of the ``alt`` attribute in HTML and is required for your course to be fully accessible. See :ref:`Best Practices for Describing Images` for more information.
 
 #. As needed, customize the image dimensions. Keep **Constrain proportions** checked to ensure the image keeps the same width and height proportions.
 
