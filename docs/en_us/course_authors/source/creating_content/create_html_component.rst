@@ -52,9 +52,9 @@ The following image shows callouts for the editing options and is followed by de
 #. Decrease and increased the indentation of the selected paragraph.
 #. Format the selected paragraph as a blockquote.
 #. Format text as code (i.e., in Courier font).
-#. Create a link from the selected text.
+#. Create a link from the selected text. See :ref:`Add a Link in an HTML Component`.
 #. Delete the current link.
-#. Insert an image at the cursor.
+#. Insert an image at the cursor. See :ref:`Add an Image to an HTML Component`
 #. Work with HTML source code, described below.
 
 
@@ -103,14 +103,14 @@ To create an HTML component:
   .. image:: ../Images/HTMLComponent_Edit.png
    :alt: Image of an empty HTML component
 
-3. In the empty component, click **Edit**.
+3. In the component, click **Edit**.
 
-   The HTML component editor opens in Visual view.
+   The HTML component editor opens.
 
-  .. image:: ../Images/HTMLEditor.png
-   :alt: Image of the HTML component Visual view
+  .. image:: ../Images/HTMLEditor_empty.png
+   :alt: Image of the HTML component editor
 
-4. Enter the text and formatting that you want, either by using the formatting buttons in Visual view or by manually adding HTML tags in HTML view.
+4. Enter and format your content. You can :ref:`Work with HTML code` if needed.
 
 5. Enter a display name (the name that you want students to see). To do this, click **Settings** in the upper-right corner of the component editor, and then enter text in the **Display Name** field.
 
@@ -118,7 +118,7 @@ To create an HTML component:
 
 6. Click **Save** to save the HTML component.
 
-You can also add links and images to HTML components. Or, you can import LaTeX code. For more information, see:
+You can also:
 
 * :ref:`Add a Link in an HTML Component`
 * :ref:`Add an Image to an HTML Component`
@@ -130,12 +130,12 @@ You can also add links and images to HTML components. Or, you can import LaTeX c
 Add a Link in an HTML Component
 ***********************************
 
-To add a link to a website, course unit, or file in an HTML component, you'll work with the **Insert/Edit Link** dialog box.
+To add a link to a website, course unit, or file in an HTML component, you'll work with the **Insert link** dialog box.
 
 .. image:: ../Images/HTML_Insert-EditLink_DBox.png
- :alt: Image of the Insert/Edit Link dialog box
+ :alt: Image of the Insert link dialog box
 
-For more information, see:
+You can:
 
 * :ref:`Add a Link to a Website`
 * :ref:`Add a Link to a Course Unit`
@@ -153,14 +153,14 @@ To add a link to a website:
 
 #. Click the link icon in the toolbar.
 
-#. In the **Insert/Edit Link** dialog box, enter the URL of the website that you want in the **Link URL** field.
+#. In the **Insert link** dialog box, enter the URL of the website that you want in the **URL** field.
 
    .. image:: ../Images/HTML_Insert-EditLink_Website.png
-    :alt: Image of the Insert/Edit Link dialog box
+    :alt: Image of the Insert link dialog box
 
-#. If you want the link to open in a new window, click the drop-down arrow next to the **Target** field, and then select **Open Link in a New Window**. If not, you can leave the default value.
+#. If you want the link to open in a new window, click the drop-down arrow next to the **Target** field, and then select **New Window**. If not, you can leave the default value.
 
-#. Click **Insert**.
+#. Click **OK**.
 
 #. Save the HTML component and test the link.
 
@@ -184,7 +184,7 @@ You can add a link to a course unit in an HTML component.
 
 #. Click the link icon in the toolbar.
 
-#. In the **Insert/Edit Link** dialog box, enter the following in the **Link URL** field.
+#. In the **Insert link** dialog box, enter the following in the **URL** field.
 
    ``/jump_to_id/<unit identifier>``
 
@@ -192,10 +192,10 @@ You can add a link to a course unit in an HTML component.
    identifier that you copied in step 2, and make sure to include both forward slashes (/).
 
    .. image:: ../Images/HTML_Insert-EditLink_CourseUnit.png
-    :alt: Image of the Inser/Edit Link dialog box with a link to a unit identifier
+    :alt: Image of the Insert link dialog box with a link to a unit identifier
 
 #. If you want the link to open in a new window, click the drop-down arrow next to
-   the **Target** field, and then select **Open Link in a New Window**. If not, you can leave the default value.
+   the **Target** field, and then select **New Window**. If not, you can leave the default value.
 
 #. Click **Insert**.
 
@@ -217,29 +217,27 @@ You can add a link in an HTML component to any file you've uploaded for the cour
   
   .. note:: You must use the **Embed URL** to link to the file, not the **External URL**.
 
-
-
 2. Select the text that you want to make into the link.
 
 #. Click the link icon in the toolbar.
 
-#. In the **Insert/Edit Link** dialog box, enter the following in the **Link URL** field.
+#. In the **Insert link** dialog box, enter the following in the **URL** field.
 
    ``/static/FileName.type``
 
    Make sure to include both forward slashes (/).
 
    .. image:: ../Images/HTML_Insert-EditLink_File.png
-    :alt: Image of the Inser/Edit Link dialog box with a link to a file
+    :alt: Image of the Insert link dialog box with a link to a file
 
 #. If you want the link to open in a new window, click the drop-down arrow next to
-   the **Target** field, and then select **Open Link in a New Window**. If not, you can leave the default value.
+   the **Target** field, and then select **New Window**. If not, you can leave the default value.
 
 #. Click **Insert**.
 
 #. Save the HTML component and test the link.
 
-.. note::  When you add the file link in the format ``/static/FileName.type``, then later reopen the **Insert/Edit Link** dialog box, you see that the link changes to ``/c4x/edX/Course-name/asset/FileName.type``. This URL is OK and you do not need to change it. In the HTML view, the link appears as ``/static/FileName.type``.
+.. note::  When you add the file link in the format ``/static/FileName.type``, then later reopen the **Insert link** dialog box, you see that the link changes to ``/c4x/edX/Course-name/asset/FileName.type``. This URL is OK and you do not need to change it. In the HTML view, the link appears as ``/static/FileName.type``.
 
 
 .. _Add an Image to an HTML Component:
@@ -263,7 +261,7 @@ To add an image, you'll need the URL of the image that you uploaded to the cours
 
 2. Click the image icon in the toolbar.
 
-#. In the **Insert/Edit Image** dialog box, enter the following in the **Image URL** field.
+#. In the **Insert/ddit image** dialog box, enter the following in the **Source** field.
 
    ``/static/FileName.type``
 
@@ -272,11 +270,11 @@ To add an image, you'll need the URL of the image that you uploaded to the cours
    .. image:: ../Images/HTML_Insert-Edit_Image.png
     :alt: Image of the Insert/Edit Image dialog box with a link to a file
 
-4. Enter alternative text in the Image Description field. See :ref:`Best Practices for Describing Images` for more information.
+4. Enter alternative text in the **Image description** field. See :ref:`Best Practices for Describing Images` for more information.
 
-#. As needed, in the **Insert/Edit Image** dialog box, customize the image alignment, dimensions, border, and vertical and horizontal space.
+#. As needed, customize the image dimensions. Keep **Constrain proportions** checked to ensure the image keeps the same width and height proportions.
 
-#. Click **Insert**.
+#. Click **OK**.
 
 #. Save the HTML component and test the image.
 
@@ -326,7 +324,7 @@ To create an HTML component that contains LaTeX code:
 
 #. When you have written or uploaded the Latex code you need, click **Save & Compile to edX XML** in the lower-left corner.
 
-   The component editor closes, and the unit page opens. You can see the way your LaTeX content looks.
+   The component editor closes. You can see the way your LaTeX content looks.
 
    .. image:: ../Images/HTML_LaTeX_CompEditor.png
     :alt: Image of the LaTeX component
