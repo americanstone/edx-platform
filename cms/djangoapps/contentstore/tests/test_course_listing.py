@@ -10,6 +10,7 @@ from django.contrib.auth.models import Group
 from django.test import RequestFactory
 
 from contentstore.views.course import _accessible_courses_list, _accessible_courses_list_from_groups
+from contentstore.utils import delete_course_and_groups
 from contentstore.tests.utils import AjaxEnabledTestClient
 from student.tests.factories import UserFactory
 from student.roles import CourseInstructorRole, CourseStaffRole
@@ -145,6 +146,43 @@ class TestCourseListing(ModuleStoreTestCase):
         with self.assertRaises(ItemNotFoundError):
             courses_list_by_groups = _accessible_courses_list_from_groups(request)
 
+    def test_get_course_list_with_invalid_course_location(self):
+        """
+        Test getting courses with invalid course location (course deleted from modulestore but
+        location exists in loc_mapper).
+        """
+        request = self.factory.get('/course')
+        request.user = self.user
+
+        course_location = Location(['i4x', 'Org', 'Course', 'course', 'Run'])
+        self._create_course_with_access_groups(course_location, 'group_name_with_dots', self.user)
+
+        # get courses through iterating all courses
+        courses_list = _accessible_courses_list(request)
+        self.assertEqual(len(courses_list), 1)
+
+        # get courses by reversing group name formats
+        courses_list_by_groups = _accessible_courses_list_from_groups(request)
+        self.assertEqual(len(courses_list_by_groups), 1)
+        # check both course lists have same courses
+        self.assertEqual(courses_list, courses_list_by_groups)
+
+        # now delete this course and re-add user to instructor group of this course
+        # Since currently deleting a course through django command does not remove its location from loc_mapper.
+        delete_course_and_groups(course_location.course_id, commit=True)
+
+        course_locator = loc_mapper().translate_location(course_location.course_id, course_location)
+        instructor_group_name = CourseInstructorRole(course_locator)._group_names[0]  # pylint: disable=protected-access
+        group, __ = Group.objects.get_or_create(name=instructor_group_name)
+        self.user.groups.add(group)
+
+        # test that get courses through iterating all courses now returns no course
+        courses_list = _accessible_courses_list(request)
+        self.assertEqual(len(courses_list), 0)
+
+        # now test that get courses by reversing group name formats gives 'ItemNotFoundError'
+        with self.assertRaises(ItemNotFoundError):
+            _accessible_courses_list_from_groups(request)
 
     # Temporarily disabling this test because it caused the following failure intermittently in Jenkins.
     # Perhaps due to a test ordering or cleanup issue?
