@@ -268,15 +268,6 @@ def delete_course(modulestore, contentstore, source_location, commit=False):
         modulestore.delete_item(source_location)
 
         # remove location of this course from loc_mapper and cache
-        course_locator = loc_mapper().translate_location(source_location.course_id, source_location)
-        course_locator_draft = loc_mapper().translate_location(
-            source_location.course_id, source_location, published=False
-        )
-
-        loc_mapper().location_map.remove({'course_id': course_locator.package_id})
-        # pylint: disable=protected-access
-        loc_mapper()._delete_course_cache_location_map_entry(
-            source_location.course_id, source_location, course_locator, course_locator_draft
-        )
+        loc_mapper().delete_course_mapping(source_location)
 
     return True

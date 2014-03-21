@@ -501,7 +501,23 @@ class LocMapperStore(object):
         setmany[old_course_id] = (published_usage, draft_usage)
         self.cache.set_many(setmany)
 
-    def _delete_course_cache_location_map_entry(self, old_course_id, location, published_usage, draft_usage):
+    def delete_course_mapping(self, course_location):
+        """
+        Remove provided course location from loc_mapper and cache.
+
+        :param course_location: a Location whose category is 'course'.
+        """
+        course_locator = self.translate_location(course_location.course_id, course_location)
+        course_locator_draft = self.translate_location(
+            course_location.course_id, course_location, published=False
+        )
+
+        self.location_map.remove({'course_id': course_locator.package_id})
+        self._delete_cache_location_map_entry(
+            course_location.course_id, course_location, course_locator, course_locator_draft
+        )
+
+    def _delete_cache_location_map_entry(self, old_course_id, location, published_usage, draft_usage):
         """
         Remove the location of course (draft and published) from cache
         """
