@@ -36,10 +36,10 @@ When you create a new HTML component, you work with the HTML editor:
 
 The HTML editor provides a “what you see is what you get” (WYSIWYG) interface that allows you to format text by clicking the formatting buttons at the top of the editor. 
 
-The following image shows callouts for the editing options and is followed by descriptions.
+The following image shows call-outs for the editing options and is followed by descriptions.
 
 .. image:: ../Images/HTML_VisualView_Toolbar.png
-  :alt: Image of the HTML editor, with callouts for formatting buttons
+  :alt: Image of the HTML editor, with call-outs for formatting buttons
 
 #. Choose a formatting style for the selected paragraph, such as heading 1, heading 2, or paragraph.
 #. Choose a font family for selected text, such as Arial, Courier New, or Times New Roman.
@@ -261,7 +261,7 @@ To add an image, you'll need the URL of the image that you uploaded to the cours
 
 2. Click the image icon in the toolbar.
 
-#. In the **Insert/ddit image** dialog box, enter the following in the **Source** field.
+#. In the **Insert image** dialog box, enter the following in the **Source** field.
 
    ``/static/FileName.type``
 
@@ -315,7 +315,7 @@ To create an HTML component that contains LaTeX code:
   .. image:: ../Images/latex_component.png
    :alt: Image of the HTML component editor with the Latex compiler.
 
-4. In the componenent editor, click **Launch Latex Source Compiler**. The Latex editor opens.
+4. In the component editor, click **Launch Latex Source Compiler**. The Latex editor opens.
 
    .. image:: ../Images/HTML_LaTeXEditor.png
     :alt: Image of the HTML component editor with the Latex compiler.
