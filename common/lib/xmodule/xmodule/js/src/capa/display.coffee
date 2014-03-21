@@ -502,6 +502,12 @@ class @Problem
       return display
 
     cminput: (container) =>
+      # queued messages are escaped, to prevent malformed html from leaking
+      # onto the page.
+      # unescape them here
+      $('.external-grader-message').each (index, element) ->
+        $(element).html($(element).text())
+
       element = $(container).find("textarea")
       tabsize = element.data("tabsize")
       mode = element.data("mode")
